@@ -1,93 +1,352 @@
 import Foundation
 
-extension Date {
+// MARK: - Date Formatting Extensions
 
-    /// Returns the date formatted as an ISO 8601 string.
+public extension Date {
+    
+    // MARK: - ISO 8601 Formatting
+    
+    /// Returns ISO 8601 formatted string.
     ///
     /// ```swift
-    /// Date().iso8601String // "2026-01-15T10:30:00Z"
+    /// date.iso8601    // "2024-01-15T10:30:00Z"
     /// ```
-    public var iso8601String: String {
+    var iso8601: String {
+        return ISO8601DateFormatter().string(from: self)
+    }
+    
+    /// Returns ISO 8601 with fractional seconds.
+    var iso8601WithFractionalSeconds: String {
         let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime]
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         return formatter.string(from: self)
     }
-
-    /// Formats the date using the given format string.
+    
+    /// Creates date from ISO 8601 string.
+    ///
+    /// - Parameter string: ISO 8601 formatted string.
+    init?(iso8601 string: String) {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        if let date = formatter.date(from: string) {
+            self = date
+            return
+        }
+        
+        formatter.formatOptions = [.withInternetDateTime]
+        if let date = formatter.date(from: string) {
+            self = date
+            return
+        }
+        
+        return nil
+    }
+    
+    // MARK: - Custom Format Strings
+    
+    /// Formats date with custom format string.
+    ///
+    /// - Parameters:
+    ///   - format: Date format string.
+    ///   - locale: Locale for formatting (default: current).
+    ///   - timeZone: Time zone (default: current).
+    /// - Returns: Formatted date string.
     ///
     /// ```swift
-    /// Date().formatted(as: "dd MMM yyyy") // "15 Jan 2026"
+    /// date.formatted("yyyy-MM-dd")           // "2024-01-15"
+    /// date.formatted("EEEE, MMMM d, yyyy")   // "Monday, January 15, 2024"
     /// ```
-    ///
-    /// - Parameter format: A date format pattern string.
-    /// - Returns: Formatted date string.
-    public func formatted(as format: String) -> String {
+    func formatted(_ format: String, locale: Locale = .current, timeZone: TimeZone = .current) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.locale = locale
+        formatter.timeZone = timeZone
         return formatter.string(from: self)
     }
-
-    /// Returns a human-readable relative time string.
+    
+    /// Creates date from string with format.
+    ///
+    /// - Parameters:
+    ///   - string: Date string.
+    ///   - format: Format string.
+    ///   - locale: Locale for parsing.
+    /// - Returns: Parsed date or nil.
+    init?(string: String, format: String, locale: Locale = Locale(identifier: "en_US_POSIX")) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.locale = locale
+        
+        guard let date = formatter.date(from: string) else { return nil }
+        self = date
+    }
+    
+    // MARK: - Predefined Formats
+    
+    /// Returns date as "yyyy-MM-dd".
+    var dateOnly: String {
+        return formatted("yyyy-MM-dd")
+    }
+    
+    /// Returns time as "HH:mm:ss".
+    var timeOnly: String {
+        return formatted("HH:mm:ss")
+    }
+    
+    /// Returns time as "HH:mm".
+    var shortTime: String {
+        return formatted("HH:mm")
+    }
+    
+    /// Returns date and time as "yyyy-MM-dd HH:mm:ss".
+    var dateTime: String {
+        return formatted("yyyy-MM-dd HH:mm:ss")
+    }
+    
+    /// Returns full date like "Monday, January 15, 2024".
+    var fullDate: String {
+        return formatted("EEEE, MMMM d, yyyy")
+    }
+    
+    /// Returns medium date like "Jan 15, 2024".
+    var mediumDate: String {
+        return formatted("MMM d, yyyy")
+    }
+    
+    /// Returns short date like "1/15/24".
+    var shortDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter.string(from: self)
+    }
+    
+    /// Returns month and year like "January 2024".
+    var monthYear: String {
+        return formatted("MMMM yyyy")
+    }
+    
+    /// Returns day and month like "15 January".
+    var dayMonth: String {
+        return formatted("d MMMM")
+    }
+    
+    /// Returns weekday name like "Monday".
+    var weekdayName: String {
+        return formatted("EEEE")
+    }
+    
+    /// Returns short weekday name like "Mon".
+    var shortWeekdayName: String {
+        return formatted("EEE")
+    }
+    
+    /// Returns month name like "January".
+    var monthName: String {
+        return formatted("MMMM")
+    }
+    
+    /// Returns short month name like "Jan".
+    var shortMonthName: String {
+        return formatted("MMM")
+    }
+    
+    // MARK: - Relative Formatting
+    
+    /// Returns relative time string like "2 hours ago".
     ///
     /// ```swift
-    /// Date().addingTimeInterval(-3600).relativeString // "1 hour ago"
+    /// date.relativeTime    // "2 hours ago", "in 3 days", "yesterday"
     /// ```
-    public var relativeString: String {
+    var relativeTime: String {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
         return formatter.localizedString(for: self, relativeTo: Date())
     }
-
-    /// Returns a short date representation.
+    
+    /// Returns short relative time like "2h ago".
+    var shortRelativeTime: String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .abbreviated
+        return formatter.localizedString(for: self, relativeTo: Date())
+    }
+    
+    /// Returns relative time with custom reference date.
     ///
-    /// ```swift
-    /// Date().shortDateString // "Jan 15, 2026"
-    /// ```
-    public var shortDateString: String {
+    /// - Parameter referenceDate: Date to compare against.
+    /// - Returns: Relative time string.
+    func relativeTime(to referenceDate: Date) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        return formatter.localizedString(for: self, relativeTo: referenceDate)
+    }
+    
+    /// Returns human-readable time difference.
+    ///
+    /// - Parameter date: Date to compare with.
+    /// - Returns: Human-readable string like "3 days, 2 hours".
+    func timeDifference(from date: Date = Date()) -> String {
+        let components = Calendar.current.dateComponents(
+            [.year, .month, .day, .hour, .minute, .second],
+            from: min(self, date),
+            to: max(self, date)
+        )
+        
+        var parts: [String] = []
+        
+        if let years = components.year, years > 0 {
+            parts.append("\(years) year\(years == 1 ? "" : "s")")
+        }
+        if let months = components.month, months > 0 {
+            parts.append("\(months) month\(months == 1 ? "" : "s")")
+        }
+        if let days = components.day, days > 0 {
+            parts.append("\(days) day\(days == 1 ? "" : "s")")
+        }
+        if let hours = components.hour, hours > 0 && parts.count < 2 {
+            parts.append("\(hours) hour\(hours == 1 ? "" : "s")")
+        }
+        if let minutes = components.minute, minutes > 0 && parts.count < 2 {
+            parts.append("\(minutes) minute\(minutes == 1 ? "" : "s")")
+        }
+        if parts.isEmpty, let seconds = components.second {
+            parts.append("\(seconds) second\(seconds == 1 ? "" : "s")")
+        }
+        
+        return parts.prefix(2).joined(separator: ", ")
+    }
+    
+    // MARK: - Localized Formatting
+    
+    /// Returns localized date string.
+    ///
+    /// - Parameters:
+    ///   - dateStyle: Date style.
+    ///   - timeStyle: Time style.
+    ///   - locale: Locale for formatting.
+    /// - Returns: Localized string.
+    func localized(
+        dateStyle: DateFormatter.Style = .medium,
+        timeStyle: DateFormatter.Style = .none,
+        locale: Locale = .current
+    ) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
+        formatter.dateStyle = dateStyle
+        formatter.timeStyle = timeStyle
+        formatter.locale = locale
         return formatter.string(from: self)
     }
-
-    /// Returns a time-only representation.
+    
+    /// Returns date formatted for specific locale.
     ///
-    /// ```swift
-    /// Date().timeString // "10:30 AM"
-    /// ```
-    public var timeString: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        return formatter.string(from: self)
+    /// - Parameter localeIdentifier: Locale identifier (e.g., "de_DE").
+    /// - Returns: Localized date string.
+    func localized(for localeIdentifier: String) -> String {
+        return localized(locale: Locale(identifier: localeIdentifier))
     }
-
-    /// Returns the full date and time representation.
-    public var fullDateTimeString: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        formatter.timeStyle = .medium
-        return formatter.string(from: self)
+    
+    // MARK: - Unix Timestamp
+    
+    /// Returns Unix timestamp (seconds since 1970).
+    var unixTimestamp: TimeInterval {
+        return timeIntervalSince1970
     }
-
-    /// Creates a `Date` from an ISO 8601 string.
+    
+    /// Returns Unix timestamp in milliseconds.
+    var unixTimestampMillis: Int64 {
+        return Int64(timeIntervalSince1970 * 1000)
+    }
+    
+    /// Creates date from Unix timestamp.
     ///
-    /// - Parameter string: An ISO 8601 formatted date string.
-    /// - Returns: A `Date` if parsing succeeds, otherwise `nil`.
-    public static func fromISO8601(_ string: String) -> Date? {
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return formatter.date(from: string)
-            ?? ISO8601DateFormatter().date(from: string)
+    /// - Parameter timestamp: Unix timestamp in seconds.
+    init(unixTimestamp: TimeInterval) {
+        self.init(timeIntervalSince1970: timestamp)
     }
-
-    /// Returns the day of the week as a string.
+    
+    /// Creates date from Unix timestamp in milliseconds.
     ///
-    /// ```swift
-    /// Date().dayOfWeek // "Wednesday"
-    /// ```
-    public var dayOfWeek: String {
-        formatted(as: "EEEE")
+    /// - Parameter millis: Unix timestamp in milliseconds.
+    init(unixTimestampMillis: Int64) {
+        self.init(timeIntervalSince1970: TimeInterval(millis) / 1000)
+    }
+    
+    // MARK: - Time Zone Conversions
+    
+    /// Converts date to string in specific time zone.
+    ///
+    /// - Parameters:
+    ///   - timeZone: Target time zone.
+    ///   - format: Date format string.
+    /// - Returns: Formatted string in time zone.
+    func string(in timeZone: TimeZone, format: String = "yyyy-MM-dd HH:mm:ss") -> String {
+        return formatted(format, timeZone: timeZone)
+    }
+    
+    /// Returns date string in UTC.
+    var utcString: String {
+        return string(in: TimeZone(identifier: "UTC")!)
+    }
+    
+    /// Returns date string in local time zone.
+    var localString: String {
+        return string(in: .current)
+    }
+}
+
+// MARK: - Date Formatter Cache
+
+/// Thread-safe date formatter cache for performance
+public final class DateFormatterCache {
+    public static let shared = DateFormatterCache()
+    
+    private var formatters: [String: DateFormatter] = [:]
+    private let queue = DispatchQueue(label: "com.swiftextensions.dateformattercache", attributes: .concurrent)
+    
+    private init() {}
+    
+    /// Returns cached formatter for format string.
+    ///
+    /// - Parameters:
+    ///   - format: Date format string.
+    ///   - locale: Locale for formatter.
+    /// - Returns: Cached date formatter.
+    public func formatter(for format: String, locale: Locale = .current) -> DateFormatter {
+        let key = "\(format)-\(locale.identifier)"
+        
+        return queue.sync {
+            if let formatter = formatters[key] {
+                return formatter
+            }
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = format
+            formatter.locale = locale
+            
+            queue.async(flags: .barrier) {
+                self.formatters[key] = formatter
+            }
+            
+            return formatter
+        }
+    }
+    
+    /// Clears all cached formatters.
+    public func clearCache() {
+        queue.async(flags: .barrier) {
+            self.formatters.removeAll()
+        }
+    }
+}
+
+// MARK: - Date Extension Using Cache
+
+public extension Date {
+    
+    /// Formats date using cached formatter (better performance for repeated use).
+    ///
+    /// - Parameter format: Date format string.
+    /// - Returns: Formatted date string.
+    func cachedFormat(_ format: String) -> String {
+        return DateFormatterCache.shared.formatter(for: format).string(from: self)
     }
 }
