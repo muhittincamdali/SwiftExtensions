@@ -285,3 +285,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Built with 🧩 by [Muhittin Camdali](https://github.com/muhittincamdali)**
 
 </div>
+
+---
+
+## 📈 Star History
+
+<a href="https://star-history.com/#muhittincamdali/SwiftExtensions&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=muhittincamdali/SwiftExtensions&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=muhittincamdali/SwiftExtensions&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=muhittincamdali/SwiftExtensions&type=Date" />
+ </picture>
+</a>
