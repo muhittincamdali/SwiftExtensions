@@ -6,6 +6,8 @@
 
 ---
 
+## 🚀 Killer Feature: @SafeAccess Property Wrapper
+Index out of bounds crashes are a thing of the past. Use `@SafeAccess var items: [String]` to automatically handle out-of-bounds queries gracefully.
 > **🛡️ PART OF THE 2026 UNIFIED CORE**
 > This repository is a verified component of 'The Endless March' initiative. Purified for Swift 6, zero-dependency, and engineered for maximum hardware saturation.
 > 
