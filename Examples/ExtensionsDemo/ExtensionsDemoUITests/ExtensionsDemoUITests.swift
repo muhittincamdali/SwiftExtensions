@@ -42,8 +42,9 @@ final class ExtensionsDemoUITests: XCTestCase {
         // 20 bytes: "Grüße " (8), the waving hand with a skin tone (8), a space and "…" (3).
         XCTAssertEqual(result.label, "Grüße 👋🏽 …")
 
-        let stepper = app.steppers["truncation-limit"]
-        for _ in 0..<4 { stepper.buttons["Decrement"].tap() }
+        // iOS 18 labels the button "Decrement"; iOS 26 and later prefix the stepper's own label.
+        let decrement = app.buttons.matching(NSPredicate(format: "label ENDSWITH 'Decrement'")).firstMatch
+        for _ in 0..<4 { decrement.tap() }
         // 16 bytes leave 13 before the ellipsis: the 8-byte emoji no longer fits after "Grüße ".
         XCTAssertEqual(result.label, "Grüße …")
     }
