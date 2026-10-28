@@ -1,0 +1,13 @@
+version: 1
+builder:
+  configs:
+    - platform: ios
+      scheme: SwiftExtensions
+      documentation_targets: [SwiftExtensions]
+    - platform: macos-spm
+    - platform: tvos
+      scheme: SwiftExtensions
+    - platform: watchos
+      scheme: SwiftExtensions
+    - platform: visionos
+      scheme: SwiftExtensions
