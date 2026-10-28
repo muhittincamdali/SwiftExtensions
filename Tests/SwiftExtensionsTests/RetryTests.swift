@@ -177,7 +177,13 @@ struct WithRetryTests {
                 throw Flaky(attempt: attempt)
             }
         }
-        try? await Task.sleep(for: .milliseconds(300))
+        // A loaded runner can take longer than any fixed pause to reach the second attempt, so
+        // wait for it instead of guessing, then give a third attempt time to show up.
+        let deadline = ContinuousClock.now.advanced(by: .seconds(30))
+        while attempts.withLock({ $0 }) < 2, ContinuousClock.now < deadline {
+            try? await Task.sleep(for: .milliseconds(10))
+        }
+        try? await Task.sleep(for: .milliseconds(200))
         task.cancel()
         await #expect(throws: CancellationError.self) { try await task.value }
         #expect(attempts.withLock { $0 } == 2)
