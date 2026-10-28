@@ -11,15 +11,9 @@ final class StubURLProtocol: URLProtocol {
     }
 
     private static let stubs = Mutex<[URL: Stub]>([:])
-    private static let served = Mutex<[URL: Int]>([:])
 
     static func register(_ stub: Stub, for url: URL) {
         stubs.withLock { $0[url] = stub }
-    }
-
-    /// The number of body bytes handed to URLSession for a URL.
-    static func bytesServed(for url: URL) -> Int {
-        served.withLock { $0[url] ?? 0 }
     }
 
     override class func canInit(with request: URLRequest) -> Bool {
@@ -36,7 +30,6 @@ final class StubURLProtocol: URLProtocol {
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: stub.headers)!
         client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
         client?.urlProtocol(self, didLoad: stub.body)
-        Self.served.withLock { $0[url, default: 0] += stub.body.count }
         client?.urlProtocolDidFinishLoading(self)
     }
 
