@@ -5,9 +5,9 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.0.0] - 2026-10-28
 
-Version 2.0.0, not yet released, is a new package with a new API. The 1.0.0 extensions mostly
+Version 2.0.0 is a new package with a new API. The 1.0.0 extensions mostly
 repeated what SwifterSwift already provides, and in June 2026 they were replaced with placeholder
 code. 2.0.0 keeps only extensions that the standard library, Foundation and SwifterSwift do not
 provide, each `Sendable`-correct in the Swift 6 language mode and tested at its edge cases.
@@ -60,5 +60,5 @@ provide, each `Sendable`-correct in the Swift 6 language mode and tested at its 
   `Dictionary`, `Double`, `Int` and `Optional`.
 - SwiftUI `Color(hex:)` and conditional view modifiers; UIKit `UIColor` and `UIView` helpers.
 
-[Unreleased]: https://github.com/muhittincamdali/SwiftExtensions/compare/v1.0.0...HEAD
+[2.0.0]: https://github.com/muhittincamdali/SwiftExtensions/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/muhittincamdali/SwiftExtensions/releases/tag/v1.0.0
