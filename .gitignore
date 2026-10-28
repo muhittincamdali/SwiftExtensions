@@ -2,13 +2,16 @@
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
-!*.xcworkspace/contents.xcworkspacedata
-/*.gcno
+!*.xcodeproj/project.xcworkspace/
+*.xcodeproj/project.xcworkspace/*
+!*.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+xcuserdata/
 
 # Build
 build/
 DerivedData/
+*.xcresult
 *.moved-aside
 *.ipa
 *.dSYM.zip
@@ -17,29 +20,12 @@ DerivedData/
 # Swift Package Manager
 .build/
 .swiftpm/
-Packages/
 Package.resolved
-
-# CocoaPods
-Pods/
-
-# Carthage
-Carthage/Build/
-
-# fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
 
 # macOS
 .DS_Store
 *.swp
-*~.nib
-*.pbxuser
-!default.pbxuser
 
-# IDE
-*.xcuserstate
-*.xcscmblueprint
-*.idea/
+# Local working files and the lychee cache of local link checks
+_work/
+.lycheecache

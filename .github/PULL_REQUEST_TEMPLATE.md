@@ -1,40 +1,11 @@
-## Description
+## What does this change?
 
-<!-- Describe your changes in detail -->
+## How was it tested?
 
-## Type of Change
-
-<!-- Mark the relevant option with an "x" -->
-
-- [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
-- [ ] ✨ New feature (non-breaking change which adds functionality)
-- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to change)
-- [ ] 📚 Documentation update
-- [ ] 🔧 Refactoring (no functional changes)
-- [ ] ✅ Test update
-
-## Related Issues
-
-<!-- Link any related issues here -->
-
-Fixes #
-
-## Checklist
-
-<!-- Mark completed items with an "x" -->
-
-- [ ] My code follows the project's style guidelines
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-
-## Screenshots (if applicable)
-
-<!-- Add screenshots to help explain your changes -->
-
-## Additional Notes
-
-<!-- Add any additional information that might be helpful -->
+- [ ] `swift test` passes
+- [ ] `xcodebuild test` passes on an iOS simulator
+- [ ] New logic has tests for its edge cases
+- [ ] `xcodebuild docbuild` has no warnings
+- [ ] README samples and `Examples/ExtensionsDemo/ExtensionsDemo/ReadmeSamples.swift` still match
+- [ ] README translations updated, or noted here if `README.md` changed
+- [ ] Screenshots regenerated with `scripts/capture-screens.sh` if the example app changed

@@ -1,316 +1,328 @@
+<!-- brand:start -->
+
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
+
+<!-- lang-selector:start -->
+<p align="center"><a href="README.md">English</a> · <a href="README.tr.md">Türkçe</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.de.md">Deutsch</a> · <a href="README.fr.md">Français</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.ru.md">Русский</a></p>
+<!-- lang-selector:end -->
+
 <p align="center">
-  <img src="https://img.shields.io/badge/Swift-6.0-FA7343?style=for-the-badge&logo=swift&logoColor=white" alt="Swift 6.0"/>
-  <img src="https://img.shields.io/badge/Platform-iOS%20|%20macOS%20|%20visionOS-007AFF?style=for-the-badge&logo=apple&logoColor=white" alt="Platform"/>
-  <img src="https://img.shields.io/badge/Standard-Unified%20Core-5856D6?style=for-the-badge" alt="Standard"/>
+<a href="https://github.com/muhittincamdali/SwiftExtensions/actions/workflows/ci.yml"><img src="https://github.com/muhittincamdali/SwiftExtensions/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+<a href="https://github.com/muhittincamdali/SwiftExtensions/releases"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-version-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-version-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-version-light.svg" alt="Latest version: v2.0.0"></picture></a>
+<a href="https://github.com/muhittincamdali/SwiftExtensions/blob/main/Package.swift"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-platforms-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-platforms-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-platforms-light.svg" alt="Supported platforms: iOS 18+ · macOS 15+ · tvOS 18+ · watchOS 11+ · visionOS 2+"></picture></a>
+<a href="https://github.com/muhittincamdali/SwiftExtensions/blob/main/Package.swift"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-language-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-language-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-language-light.svg" alt="Language version: Swift 6.2+"></picture></a>
+<a href="https://github.com/muhittincamdali/SwiftExtensions/blob/main/LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-license-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-license-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/badge-license-light.svg" alt="License: MIT"></picture></a>
 </p>
 
----
+<p align="center">
+<a href="#quick-start"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-start-en-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-start-en-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-start-en-light.svg" alt="Get started"></picture></a>
+<a href="https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-docs-en-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-docs-en-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-docs-en-light.svg" alt="Documentation"></picture></a>
+<a href="https://github.com/muhittincamdali/SwiftExtensions/tree/main/Examples"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-examples-en-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-examples-en-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/button-examples-en-light.svg" alt="Examples"></picture></a>
+</p>
 
-## 🚀 Killer Feature: @SafeAccess Property Wrapper
-Index out of bounds crashes are a thing of the past. Use `@SafeAccess var items: [String]` to automatically handle out-of-bounds queries gracefully.
-> **🛡️ PART OF THE 2026 UNIFIED CORE**
-> This repository is a verified component of 'The Endless March' initiative. Purified for Swift 6, zero-dependency, and engineered for maximum hardware saturation.
-> 
-> *Flagship Engines:* [SwiftNetwork](https://github.com/muhittincamdali/SwiftNetwork) | [SwiftAI](https://github.com/muhittincamdali/SwiftAI) | [LiquidGlassKit](https://github.com/muhittincamdali/LiquidGlassKit)
+<!-- brand:end -->
 
----
+SwiftExtensions is a small Swift package of extensions that the standard library, Foundation and
+[SwifterSwift](https://github.com/SwifterSwift/SwifterSwift) do not provide: time limits, retries
+and bounded parallel work for Swift concurrency, conversions that return `nil` where Swift's own
+initializers stop the app, size limits for downloads and text, and helpers for the scene life
+cycle and the reduced-resource preference of iOS 27. It runs on iOS 18+, macOS 15+, tvOS 18+,
+watchOS 11+ and visionOS 2+ and has no dependencies.
 
-<div align="center">
+**How it differs from SwifterSwift:** SwifterSwift is a large collection of conveniences (hundreds
+of extensions for strings, collections, colors and UIKit). This package is the opposite: extensions in ten
+narrow areas, none of which SwifterSwift covers, each one `Sendable`-correct under Swift 6
+strict concurrency, tested at its edge cases and documented with the reason it exists. Use
+SwifterSwift for conveniences and this package for the cases below; the two can be imported
+together.
 
+## Highlights
+
+- **Conversions that do not trap** — `Int(rounding:)`, `UInt8(clamping:)` and
+  `Duration(timeInterval:)` return `nil` for NaN, infinity and out-of-range values, where
+  `Int(_:)` and `Duration.seconds(_:)` stop the app.
+- **Time limits and retries** — `withTimeout` cancels work that runs too long; `withRetry` backs
+  off exponentially with jitter, never retries cancellation, and its `RetryPolicy` corrects
+  invalid values so remote configuration cannot make it loop or trap.
+- **Parallel work with a limit** — `concurrentMap(maxConcurrency:)` keeps the order of the input,
+  runs at most N transforms at a time and uses typed throws: no `try` for a transform that
+  cannot throw.
+- **Size limits** — `collect(limit:)` and `URLSession.data(for:limit:)` stop reading at the limit
+  instead of filling the memory; `truncated(toUTF8ByteCount:)` keeps text within a byte budget
+  without cutting an emoji in half.
+- **iOS 27** — `UIApplication.activeWindowScene` and `activeKeyWindow` replace the deprecated
+  `windows` and `keyWindow` for the scene life cycle that iOS 27 requires, and
+  `ResourceUsageAdvice` combines the iOS 27 reduced-resource preference with Low Power Mode and
+  the thermal state from iOS 18 on.
+- **Swift 6 strict concurrency** — every public type is `Sendable`, every closure states its
+  isolation, and the package builds without warnings in the Swift 6 language mode.
+- **Tested** — 89 Swift Testing tests on macOS, including the README samples, the same tests plus
+  the UIKit ones on an iOS simulator, and 7 UI tests that drive the example app.
+
+## Quick start
+
+**1. Add the package**
+
+In Xcode, choose **File › Add Package Dependencies…** and paste the repository URL into the
+search field at the top right:
+
+```text
+https://github.com/muhittincamdali/SwiftExtensions.git
 ```
-╔═══════════════════════════════════════════════════════════════════════╗
-║                                                                       ║
-║   ███████╗██╗    ██╗██╗███████╗████████╗                             ║
-║   ██╔════╝██║    ██║██║██╔════╝╚══██╔══╝                             ║
-║   ███████╗██║ █╗ ██║██║█████╗     ██║                                ║
-║   ╚════██║██║███╗██║██║██╔══╝     ██║                                ║
-║   ███████║╚███╔███╔╝██║██║        ██║                                ║
-║   ╚══════╝ ╚══╝╚══╝ ╚═╝╚═╝        ╚═╝                                ║
-║                                                                       ║
-║   ███████╗██╗  ██╗████████╗███████╗███╗   ██╗███████╗██╗ ██████╗ ███╗   ██╗███████╗
-║   ██╔════╝╚██╗██╔╝╚══██╔══╝██╔════╝████╗  ██║██╔════╝██║██╔═══██╗████╗  ██║██╔════╝
-║   █████╗   ╚███╔╝    ██║   █████╗  ██╔██╗ ██║███████╗██║██║   ██║██╔██╗ ██║███████╗
-║   ██╔══╝   ██╔██╗    ██║   ██╔══╝  ██║╚██╗██║╚════██║██║██║   ██║██║╚██╗██║╚════██║
-║   ███████╗██╔╝ ██╗   ██║   ███████╗██║ ╚████║███████║██║╚██████╔╝██║ ╚████║███████║
-║   ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
-║                                                                       ║
-╚═══════════════════════════════════════════════════════════════════════╝
+
+Leave **Dependency Rule** at **Up to Next Major Version** from `2.0.0` and click **Add Package**.
+In the next window, choose your app target next to **SwiftExtensions** and click **Add Package**
+again.
+
+**2. Import the module**
+
+```swift
+import SwiftExtensions
 ```
 
-**Comprehensive collection of Swift extensions for everyday use**
+Put this line at the top of each Swift file that uses the extensions.
 
-[![Swift](https://img.shields.io/badge/Swift-5.9+-F05138?style=flat&logo=swift&logoColor=white)](https://swift.org)
-[![Platforms](https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20visionOS-blue?style=flat)](https://developer.apple.com)
-[![SPM](https://img.shields.io/badge/SPM-Compatible-green?style=flat&logo=swift)](https://swift.org/package-manager/)
-[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat)](LICENSE)
-[![CI](https://github.com/muhittincamdali/SwiftExtensions/actions/workflows/ci.yml/badge.svg)](https://github.com/muhittincamdali/SwiftExtensions/actions/workflows/ci.yml)
-[![codecov](https://img.shields.io/badge/coverage-95%25-brightgreen?style=flat)](https://github.com/muhittincamdali/SwiftExtensions)
-[![GitHub stars](https://img.shields.io/github/stars/muhittincamdali/SwiftExtensions?style=flat)](https://github.com/muhittincamdali/SwiftExtensions/stargazers)
-[![GitHub contributors](https://img.shields.io/github/contributors/muhittincamdali/SwiftExtensions?style=flat)](https://github.com/muhittincamdali/SwiftExtensions/graphs/contributors)
+**3. Use it**
 
-[Features](#features) • [Installation](#installation) • [Quick Start](#quick-start) • [Documentation](#documentation) • [Contributing](#contributing)
+In a new Xcode app (**File › New › Project… › App**), replace everything in `ContentView.swift`
+with:
 
-</div>
+```swift
+import SwiftExtensions
+import SwiftUI
 
----
+struct ContentView: View {
+    @State private var status = "Not started"
 
-## Features
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Int(rounding: 0.0 / 0.0) is \(Int(rounding: 0.0 / 0.0) ?? -1)")
+            Text("Grüße 👋🏽".truncated(toUTF8ByteCount: 9, ending: "…"))
+            Button("Wait 3 s with a 1 s limit") {
+                Task { status = await waitWithLimit() }
+            }
+            Text(status)
+        }
+    }
+}
 
-- 📝 **String Extensions** — Validation, formatting, transformations
-- 📅 **Date Extensions** — Parsing, formatting, calculations
-- 🔢 **Numeric Extensions** — Formatting, rounding, clamping
-- 📦 **Collection Extensions** — Safe access, grouping, chunking
-- 🎨 **UI Extensions** — Colors, layouts, animations (iOS/macOS)
-- 🔗 **Optional Extensions** — Unwrapping helpers, default values
-- 📊 **Data Extensions** — Encoding, hashing, compression
-- ⚡ **Performance Focused** — Zero runtime overhead
+func waitWithLimit() async -> String {
+    do {
+        try await withTimeout(.seconds(1)) {
+            try await Task.sleep(for: .seconds(3))
+        }
+        return "Finished"
+    } catch is TimeoutError {
+        return "Stopped after 1 second"
+    } catch {
+        return "Cancelled"
+    }
+}
+```
+
+Press **Run** (⌘R). The first line shows `-1`, because `Int(rounding:)` returned `nil` for NaN
+where `Int(0.0 / 0.0)` would have stopped the app. The second line shows `Grüß…`: 9 bytes of
+UTF-8 with the ellipsis. The button starts a 3-second task and shows **Stopped after 1 second**.
 
 ## Installation
 
 ### Swift Package Manager
 
-Add SwiftExtensions to your `Package.swift`:
+In Xcode, choose **File › Add Package Dependencies…** and enter
+`https://github.com/muhittincamdali/SwiftExtensions.git`, or add it to the `dependencies` in your
+`Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/muhittincamdali/SwiftExtensions.git", from: "1.0.0")
+    .package(url: "https://github.com/muhittincamdali/SwiftExtensions.git", from: "2.0.0")
+],
+targets: [
+    .target(name: "YourApp", dependencies: [
+        .product(name: "SwiftExtensions", package: "SwiftExtensions")
+    ])
 ]
 ```
 
-Or add it directly in Xcode: **File → Add Package Dependencies** and enter:
-```
-https://github.com/muhittincamdali/SwiftExtensions.git
-```
+### Requirements
 
-### CocoaPods
+| | Minimum |
+| --- | --- |
+| Swift | 6.2 (Xcode 26 or later) |
+| Platforms | iOS 18, macOS 15, tvOS 18, watchOS 11, visionOS 2 |
+| `ResourceUsageAdvice.current(traitCollection:)` | iOS 27 SDK (Xcode 27) |
 
-```ruby
-pod 'SwiftExtensions', '~> 1.0'
-```
+Version 2.0.0 replaces the 1.0.0 API from February 2026, a broad set of conveniences that mostly
+repeated SwifterSwift; in June 2026 those sources were replaced with placeholder code. 2.0.0 is a
+new, smaller package built and tested for the Swift 6 language mode. [CHANGELOG.md](CHANGELOG.md)
+lists the changes.
 
-### Manual Installation
+## Usage
 
-Download and drag the `Sources/SwiftExtensions` folder into your Xcode project.
+The samples below are compiled and run by the tests
+([`ReadmeSamples.swift`](Examples/ExtensionsDemo/ExtensionsDemo/ReadmeSamples.swift)).
 
-## Quick Start
-
-### String Extensions
-
-```swift
-import SwiftExtensions
-
-// Validation
-"user@example.com".isValidEmail        // true
-"https://github.com".isValidURL        // true
-"+1234567890".isValidPhone             // true
-
-// Transformations
-"hello world".capitalizingFirstLetter  // "Hello world"
-"CamelCase".snakeCased                 // "camel_case"
-"hello".reversed                       // "olleh"
-
-// Utilities
-"  spacious  ".trimmed                 // "spacious"
-"Hello, World!".removing("!")          // "Hello, World"
-"abc123".digitsOnly                    // "123"
-```
-
-### Date Extensions
+### Conversions that do not trap
 
 ```swift
-// Formatting
-Date().formatted(.relative)            // "2 hours ago"
-Date().formatted(.iso8601)             // "2024-01-15T10:30:00Z"
-Date().formatted("MMMM dd, yyyy")      // "January 15, 2024"
-
-// Calculations
-Date().adding(days: 7)                 // 7 days from now
-Date().startOfDay                      // Today at 00:00:00
-Date().endOfMonth                      // Last day of month
-
-// Comparisons
-date1.isSameDay(as: date2)
-date.isToday
-date.isWeekend
-```
-
-### Collection Extensions
-
-```swift
-// Safe access
-let array = [1, 2, 3]
-array[safe: 10]                        // nil (no crash!)
-
-// Grouping
-let people = [Person(age: 20), Person(age: 30), Person(age: 20)]
-people.grouped(by: \.age)              // [20: [...], 30: [...]]
-
-// Chunking
-[1, 2, 3, 4, 5].chunked(into: 2)       // [[1, 2], [3, 4], [5]]
-
-// Unique elements
-[1, 2, 2, 3, 3, 3].unique              // [1, 2, 3]
-```
-
-### Optional Extensions
-
-```swift
-// Unwrapping
-let name: String? = nil
-name.or("Anonymous")                   // "Anonymous"
-name.isNilOrEmpty                      // true
-
-// Conditional execution
-optionalValue.ifLet { value in
-    print("Has value: \(value)")
+func progressLabel(done: Double, total: Double) -> String {
+    // done / total is NaN when both are 0 and infinity when only total is 0.
+    guard let percent = Int(rounding: done / total * 100) else { return "–" }
+    return "\(percent) %"
 }
 
-// Throwing unwrap
-try optionalValue.orThrow(MyError.notFound)
+func retryDelay(fromHeader value: String?) -> Duration {
+    // "Retry-After: 1e400" parses as infinity; Duration.seconds(_:) would stop the app.
+    guard let seconds = value.flatMap(Double.init), seconds >= 0 else { return .seconds(5) }
+    return Duration(timeInterval: seconds) ?? .seconds(5)
+}
 ```
 
-### Numeric Extensions
+| Call | Returns `nil` for |
+| --- | --- |
+| `Int(rounding: x, rule)` | NaN, ±infinity, a rounded value outside the type |
+| `UInt8(clamping: x)` | NaN only; other values are held at `min` or `max` |
+| `Duration(timeInterval: x)` | NaN, ±infinity, a magnitude of 2⁶³ seconds or more |
+
+`Duration.timeInterval` converts back, and `Date.advanced(by: .seconds(30))` takes a `Duration`.
+
+### Time limits, retries and parallel work
 
 ```swift
-// Formatting
-1234567.89.formatted(.currency("USD"))  // "$1,234,567.89"
-0.456.formatted(.percent)               // "45.6%"
-1_500_000.abbreviated                   // "1.5M"
+protocol PhotoLibrary: Sendable {
+    func thumbnail(for id: Int) async throws -> Data
+}
 
-// Clamping
-value.clamped(to: 0...100)
-
-// Rounding
-3.14159.rounded(to: 2)                  // 3.14
+func thumbnails(for ids: [Int], from library: some PhotoLibrary) async throws -> [Data] {
+    try await withTimeout(.seconds(10)) {
+        try await ids.concurrentMap(maxConcurrency: 4) { id in
+            try await withRetry(RetryPolicy(maxAttempts: 3)) { _ in
+                try await library.thumbnail(for: id)
+            }
+        }
+    }
+}
 ```
 
-### UI Extensions (iOS/macOS)
+- `withTimeout` throws `TimeoutError` after the limit and cancels the operation. Cancellation is
+  cooperative: an operation that never checks for it delays the error until it returns.
+- `withRetry` waits `initialDelay × multiplier^(n − 1)`, at most `maxDelay`, minus up to
+  `jitter` of it. It runs on the caller's actor and never retries `CancellationError`.
+- `concurrentMap` returns the results in the order of `ids`. The first error cancels the
+  running transforms and is thrown; `concurrentCompactMap` and `concurrentForEach` work the same
+  way.
+
+### Size limits
 
 ```swift
-// Colors
-UIColor(hex: "#FF5733")
-UIColor.random
+func downloadAvatar(from url: URL) async throws -> Data {
+    let (data, _) = try await URLSession.shared.data(from: url, limit: 512 * 1024)
+    return data
+}
 
-// Views
-view.addShadow(radius: 10, opacity: 0.3)
-view.roundCorners(.allCorners, radius: 12)
-view.shake()  // Animation
-
-// Auto Layout
-view.pin(to: superview)
-view.centerInSuperview()
-view.constrainSize(width: 100, height: 50)
+func pushTitle(for name: String) -> String {
+    // The notification server stores titles in a 64-byte column, measured in UTF-8.
+    "New message from \(name)".truncated(toUTF8ByteCount: 64, ending: "…")
+}
 ```
 
-## Requirements
+- `data(for:limit:)` refuses a `Content-Length` above the limit before reading the body, stops
+  any other body at byte `limit + 1`, cancels the transfer and throws `ResponseTooLargeError`.
+- `collect(limit:)` and `collectData(limit:)` do the same for any `AsyncSequence`.
+- `truncated(toUTF8ByteCount:ending:)` keeps whole characters: a 25-byte family emoji is kept or
+  left out, never cut.
 
-| Platform | Minimum Version |
-|----------|----------------|
-| iOS      | 15.0+          |
-| macOS    | 12.0+          |
-| tvOS     | 15.0+          |
-| watchOS  | 8.0+           |
-| visionOS | 1.0+           |
-| Swift    | 5.9+           |
+### Window scenes
+
+```swift
+@MainActor
+func presentSignedOutAlert(in application: UIApplication) {
+    guard let root = application.activeKeyWindow?.rootViewController else { return }
+    let alert = UIAlertController(title: "Signed out", message: nil, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    root.present(alert, animated: true)
+}
+```
+
+Call it with `UIApplication.shared`. `activeWindowScene` prefers a scene in the foreground and
+active, then inactive, then in the background. Apple's
+[TN3187](https://developer.apple.com/documentation/technotes/tn3187-migrating-to-the-uikit-scene-based-life-cycle)
+explains the scene life cycle that apps built with the iOS 27 SDK must use.
+
+### Reduced resource usage
+
+```swift
+struct GalleryView: View {
+    @State private var advice = ResourceUsageAdvice.current()
+
+    var body: some View {
+        Text(advice.shouldReduceWork ? "Prefetching paused" : "Prefetching on")
+            .task {
+                for await next in ResourceUsageAdvice.updates() {
+                    advice = next
+                }
+            }
+    }
+}
+```
+
+`shouldReduceWork` is `true` when Low Power Mode is on, the thermal state is `serious` or
+`critical`, or, on iOS 27, the system prefers reduced resource usage. Pass the iOS 27 value from
+`@Environment(\.systemPrefersReducedResourceUsage)` or a trait collection; the
+[article](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/scenelifecycleandresources)
+shows both.
+
+## SwiftExtensions and SwifterSwift
+
+| Need | Without this package | SwiftExtensions |
+| --- | --- | --- |
+| Integer from a `Double` that may be NaN | `Int(x)` traps | `Int(rounding:)`, `Int(clamping:)` |
+| `Duration` from a `TimeInterval` | `.seconds(x)` traps for NaN | `Duration(timeInterval:)` |
+| Text within a byte limit | SwifterSwift's `truncated(toLength:)` counts characters | `truncated(toUTF8ByteCount:)` |
+| A time limit for async work | A task group written by hand | `withTimeout` |
+| Retries with backoff | A loop with `Task.sleep` | `withRetry`, `RetryPolicy` |
+| Parallel map with a limit | One task per element | `concurrentMap(maxConcurrency:)` |
+| Async sequence or download with a size limit | `Array(sequence)`, `data(for:)` read any size | `collect(limit:)`, `data(for:limit:)` |
+| The window on screen | `UIApplication.shared.windows`, deprecated; SwifterSwift still uses it | `activeWindowScene`, `activeKeyWindow` |
+| Reduce work on iOS 18 to 27 | Three APIs, one of them iOS 27 only | `ResourceUsageAdvice` |
+
+[SwiftExtensions and SwifterSwift](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/comparisonwithswifterswift)
+also compares the package with swift-async-algorithms, swift-concurrency-extras and
+CollectionConcurrencyKit.
+
+## Example app
+
+[`Examples/ExtensionsDemo`](Examples/ExtensionsDemo) is a SwiftUI app for iOS and macOS with one
+screen per group of extensions: conversions of values that trap, a text field truncated to a byte
+limit, buttons that run `withTimeout`, `withRetry` and `concurrentMap`, and the live resource
+advice and window scene state. Open `ExtensionsDemo.xcodeproj` and press **Run**. Its UI tests
+check on an iOS simulator what each screen shows.
+
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="The Conversions screen of ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="The UTF-8 truncation screen of ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="The Async limits screen of ExtensionsDemo with measured results"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="The Scenes and resources screen of ExtensionsDemo"></picture>
+</p>
+
+The screenshots come from the app on an iPhone simulator, taken by `scripts/capture-screens.sh`.
 
 ## Documentation
 
-### Available Extensions
+The [documentation](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/)
+covers every type and has five articles:
 
-| Type | Extensions |
-|------|------------|
-| `String` | Validation, formatting, transformations, subscripting |
-| `Date` | Formatting, calculations, comparisons, components |
-| `Array` | Safe access, grouping, chunking, filtering |
-| `Dictionary` | Merging, mapping, filtering |
-| `Optional` | Unwrapping, default values, conditional execution |
-| `Int/Double` | Formatting, clamping, rounding |
-| `Data` | Base64, hex, hashing |
-| `UIView/NSView` | Layout, styling, animations |
-| `UIColor/NSColor` | Hex init, manipulation, random |
-
-### Advanced Usage
-
-<details>
-<summary><b>Custom String Validation</b></summary>
-
-```swift
-extension String {
-    var isValidCustomFormat: Bool {
-        let regex = "^[A-Z]{2}\\d{4}$"
-        return self.matches(regex)
-    }
-}
-
-"AB1234".isValidCustomFormat  // true
-```
-
-</details>
-
-<details>
-<summary><b>Date Ranges</b></summary>
-
-```swift
-let range = Date()...Date().adding(days: 7)
-
-for day in range.days {
-    print(day.formatted())
-}
-
-// Check if date is in range
-someDate.isWithin(range)
-```
-
-</details>
-
-<details>
-<summary><b>Collection Transformations</b></summary>
-
-```swift
-// Async map
-let results = await items.asyncMap { item in
-    await processItem(item)
-}
-
-// Compact map with key path
-let names = people.compactMap(\.nickname)
-
-// Filter with key path
-let adults = people.filter(\.isAdult)
-```
-
-</details>
+- [Getting started](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/gettingstarted)
+- [SwiftExtensions and SwifterSwift](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/comparisonwithswifterswift)
+- [Bounding async work](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/boundingasyncwork)
+- [Converting without traps](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/convertingwithouttraps)
+- [The scene life cycle and reduced resource usage](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/scenelifecycleandresources)
 
 ## Contributing
 
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) before submitting a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Every extension needs a reason that the standard library, Foundation and SwifterSwift do not
+cover, tests for its edge cases and documentation; [CONTRIBUTING.md](CONTRIBUTING.md) explains
+how to propose one. Report security issues as described in [SECURITY.md](SECURITY.md).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-
-**Built with 🧩 by [Muhittin Camdali](https://github.com/muhittincamdali)**
-
-</div>
-
----
-
-## 📈 Star History
-
-<a href="https://star-history.com/#muhittincamdali/SwiftExtensions&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=muhittincamdali/SwiftExtensions&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=muhittincamdali/SwiftExtensions&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=muhittincamdali/SwiftExtensions&type=Date" />
- </picture>
-</a>
+SwiftExtensions is available under the MIT license. See [LICENSE](LICENSE).

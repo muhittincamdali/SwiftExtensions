@@ -1,0 +1,43 @@
+{
+  "name": "SwiftExtensions",
+  "repository": "muhittincamdali/SwiftExtensions",
+  "tagline": {
+    "en": "Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."
+  },
+  "tags": {
+    "en": [
+      "Swift 6",
+      "Sendable",
+      "iOS 18 to 27",
+      "No dependencies"
+    ]
+  },
+  "motif": "code",
+  "buttons": [
+    "start",
+    "docs",
+    "examples"
+  ],
+  "links": {
+    "docs": "https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/",
+    "examples": "Examples/"
+  },
+  "languages": [
+    "en",
+    "tr",
+    "zh-CN",
+    "ja",
+    "ko",
+    "es",
+    "de",
+    "fr",
+    "pt-BR",
+    "ru"
+  ],
+  "docc": {
+    "targets": [
+      "SwiftExtensions"
+    ]
+  },
+  "socialTheme": "dark"
+}

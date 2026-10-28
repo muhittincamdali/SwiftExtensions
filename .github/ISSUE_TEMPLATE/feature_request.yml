@@ -1,61 +1,33 @@
-name: Feature Request
-description: Suggest an idea for this project
-title: "[Feature]: "
+name: Extension proposal
+description: Propose an extension for SwiftExtensions
 labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for suggesting a feature! Please fill out the form below.
-        
+        The package only takes extensions that the standard library, Foundation and SwifterSwift do not provide, that are correct under Swift 6 strict concurrency, and that come with tests for their edge cases (see CONTRIBUTING.md).
+
   - type: textarea
     id: problem
     attributes:
-      label: Problem Statement
-      description: Is your feature request related to a problem? Please describe.
-      placeholder: A clear description of what the problem is. Ex. I'm always frustrated when...
+      label: Problem
+      description: What do you write today, and why does it trap, grow without a limit or not compile in the Swift 6 language mode?
     validations:
       required: true
-      
+
   - type: textarea
     id: solution
     attributes:
-      label: Proposed Solution
-      description: Describe the solution you'd like
-      placeholder: A clear description of what you want to happen
+      label: Proposed extension
+      description: The API you would like, with a short code sample.
+      render: swift
     validations:
       required: true
-      
-  - type: textarea
-    id: api
-    attributes:
-      label: API Design
-      description: If applicable, show how the API might look
-      render: swift
-      placeholder: |
-        // Example usage
-        let result = "hello".newExtension()
-        
+
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives Considered
-      description: Describe any alternative solutions or features you've considered
-      
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Priority
-      options:
-        - Nice to have
-        - Important
-        - Critical
+      label: Existing alternatives
+      description: The closest API in the standard library, Foundation, SwifterSwift or another package, and why it is not enough.
     validations:
       required: true
-      
-  - type: checkboxes
-    id: contribution
-    attributes:
-      label: Contribution
-      options:
-        - label: I would be willing to submit a PR for this feature
