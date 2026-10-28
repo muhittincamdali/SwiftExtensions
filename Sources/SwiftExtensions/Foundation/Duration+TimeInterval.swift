@@ -28,7 +28,8 @@ extension Duration {
     public init?(timeInterval: TimeInterval) {
         guard timeInterval.isFinite else { return nil }
         let whole = timeInterval.rounded(.towardZero)
-        guard let seconds = Int64(exactly: whole) else { return nil }
+        // Int64 also holds -2^63, but the range stays symmetric: a magnitude of 2^63 is nil.
+        guard let seconds = Int64(exactly: whole), seconds != .min else { return nil }
         let attoseconds = Int64(((timeInterval - whole) * 1e18).rounded())
         self.init(secondsComponent: seconds, attosecondsComponent: attoseconds)
     }

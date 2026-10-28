@@ -32,11 +32,14 @@ struct DurationTests {
         let seconds = 9_223_372_036_854_774_784.0
         let duration = try #require(Duration(timeInterval: seconds))
         #expect(duration.components.seconds == 9_223_372_036_854_774_784)
+        let negative = try #require(Duration(timeInterval: -seconds))
+        #expect(negative.components.seconds == -9_223_372_036_854_774_784)
     }
 
     @Test(arguments: [
         Double.nan, .signalingNaN, .infinity, -.infinity,
-        9_223_372_036_854_775_808.0, -9_223_372_036_854_777_856.0, 1e300, -.greatestFiniteMagnitude
+        9_223_372_036_854_775_808.0, -9_223_372_036_854_775_808.0, -9_223_372_036_854_777_856.0, 1e300,
+        -.greatestFiniteMagnitude
     ])
     func aValueWithoutADurationGivesNil(seconds: Double) {
         #expect(Duration(timeInterval: seconds) == nil)
