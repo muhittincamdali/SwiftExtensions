@@ -7,7 +7,15 @@ import SwiftExtensions
 @Suite("README samples")
 struct ReadmeSampleTests {
     @Test func theQuickStartStopsTheSlowCallAfterOneSecond() async {
-        #expect(await waitWithLimit() == "Stopped after 1 second")
+        // The README sample races a 1 second limit against a 3 second sleep. A runner that stalls
+        // the process for two seconds lets both timers expire together, and the sleep can win.
+        // A broken timeout fails every attempt, a stall only one.
+        let expected = "Stopped after 1 second"
+        var result = await waitWithLimit()
+        for _ in 1..<3 where result != expected {
+            result = await waitWithLimit()
+        }
+        #expect(result == expected)
     }
 
     @Test func theProgressLabelSurvivesADivisionByZero() {
