@@ -1,4 +1,5 @@
 import Foundation
+import Synchronization
 import Testing
 import SwiftExtensions
 
@@ -56,6 +57,20 @@ struct RetryPolicyTests {
         #expect(policy.maxDelay == .zero)
         #expect(policy.jitter == 0)
         #expect(policy.delay(afterAttempt: 5, randomFraction: 0.5) == .zero)
+    }
+
+    @Test func aMaximumBeyondWhatAClockCanSleepIsShortened() {
+        // A Duration this long traps in Clock.sleep(for:); the policy keeps Int64.max nanoseconds.
+        let longest = Duration.nanoseconds(Int64.max)
+        let policy = RetryPolicy(
+            initialDelay: .milliseconds(10),
+            multiplier: 1e300,
+            maxDelay: .seconds(Int64.max),
+            jitter: 0
+        )
+        #expect(policy.maxDelay == longest)
+        #expect(policy.delay(afterAttempt: 2, randomFraction: 0) == longest)
+        #expect(RetryPolicy(initialDelay: .seconds(Int64.max), jitter: 0).delay(afterAttempt: 1, randomFraction: 0) <= longest)
     }
 
     @Test(arguments: [
@@ -139,6 +154,27 @@ struct WithRetryTests {
         task.cancel()
         await #expect(throws: CancellationError.self) { try await task.value }
         #expect(ContinuousClock.now - started < .seconds(10))
+    }
+
+    @Test func aHugeMaximumWaitsUntilCancelledInsteadOfTrapping() async {
+        let endless = RetryPolicy(
+            maxAttempts: 3,
+            initialDelay: .milliseconds(10),
+            multiplier: 1e300,
+            maxDelay: .seconds(Int64.max),
+            jitter: 0
+        )
+        let attempts = Mutex(0)
+        let task = Task {
+            try await withRetry(endless) { attempt -> Int in
+                attempts.withLock { $0 = attempt }
+                throw Flaky(attempt: attempt)
+            }
+        }
+        try? await Task.sleep(for: .milliseconds(300))
+        task.cancel()
+        await #expect(throws: CancellationError.self) { try await task.value }
+        #expect(attempts.withLock { $0 } == 2)
     }
 
     @MainActor

@@ -23,6 +23,8 @@ do {
   `URLSession`, `Task.sleep` and most system APIs return at once when cancelled; a loop of your
   own should call `try Task.checkCancellation()`.
 - A limit of zero or less throws ``TimeoutError`` without starting the operation.
+- A limit above `Int64.max` nanoseconds (about 292 years), which `Clock.sleep(for:)` cannot
+  wait for, waits that long instead of trapping.
 - The operation may be isolated to an actor: `withTimeout(.seconds(1)) { @MainActor in … }` runs
   it on the main actor.
 - Pass `clock: SuspendingClock()` to stop counting while the device sleeps.
@@ -49,12 +51,13 @@ is never retried, and cancelling the task during a wait ends the call at once.
 ``RetryPolicy`` corrects its values when it is created, so a policy built from remote
 configuration cannot loop forever or trap:
 
-| Value                                                     | Corrected to          |
-| --------------------------------------------------------- | --------------------- |
-| `maxAttempts` below 1 or above ``RetryPolicy/attemptLimit`` | 1 or 100              |
-| A negative `initialDelay` or `maxDelay`                   | `.zero`               |
-| A `multiplier` below 1, infinite or NaN                   | 1                     |
-| A `jitter` outside 0...1                                  | 0 or 1; NaN becomes 0 |
+| Value                                                        | Corrected to            |
+| ------------------------------------------------------------ | ----------------------- |
+| `maxAttempts` below 1 or above ``RetryPolicy/attemptLimit``  | 1 or 100                |
+| A negative `initialDelay` or `maxDelay`                      | `.zero`                 |
+| A `maxDelay` above `Int64.max` nanoseconds (about 292 years) | `Int64.max` nanoseconds |
+| A `multiplier` below 1, infinite or NaN                      | 1                       |
+| A `jitter` outside 0...1                                     | 0 or 1; NaN becomes 0   |
 
 ## Parallel work with a limit
 

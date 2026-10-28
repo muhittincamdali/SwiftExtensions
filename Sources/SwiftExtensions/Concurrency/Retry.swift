@@ -9,8 +9,9 @@ import Foundation
 ///
 /// Every value is checked when the policy is created, so a policy built from remote
 /// configuration cannot loop forever or trap: ``maxAttempts`` is kept between 1 and
-/// ``attemptLimit``, negative delays become zero, a `multiplier` below 1 or not finite becomes
-/// 1, and a `jitter` outside 0...1 or not finite is clamped (NaN becomes 0).
+/// ``attemptLimit``, negative delays become zero, a `maxDelay` above `Int64.max` nanoseconds
+/// (about 292 years) is shortened to that, a `multiplier` below 1 or not finite becomes 1, and a
+/// `jitter` outside 0...1 or not finite is clamped (NaN becomes 0).
 public struct RetryPolicy: Sendable, Hashable {
     /// The largest number of attempts a policy allows.
     public static let attemptLimit = 100
@@ -41,7 +42,7 @@ public struct RetryPolicy: Sendable, Hashable {
         self.maxAttempts = min(max(maxAttempts, 1), Self.attemptLimit)
         self.initialDelay = max(initialDelay, .zero)
         self.multiplier = multiplier.isFinite && multiplier >= 1 ? multiplier : 1
-        self.maxDelay = max(maxDelay, .zero)
+        self.maxDelay = min(max(maxDelay, .zero), .longestSleep)
         self.jitter = jitter.isNaN ? 0 : min(max(jitter, 0), 1)
     }
 
@@ -61,6 +62,7 @@ public struct RetryPolicy: Sendable, Hashable {
         let fraction = randomFraction.isNaN ? 0 : min(max(randomFraction, 0), 1)
         let seconds = capped * (1 - jitter * fraction)
         // Whole nanoseconds, so that 0.1 s × 3 is 300 ms and not 300 ms plus 40 attoseconds.
+        // Only a wait of about Int64.max nanoseconds rounds to a value that does not fit.
         guard let nanoseconds = Int64(rounding: seconds * 1e9) else { return maxDelay }
         return .nanoseconds(nanoseconds)
     }

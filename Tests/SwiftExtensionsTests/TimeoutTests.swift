@@ -38,6 +38,15 @@ struct TimeoutTests {
         #expect(!ran.withLock { $0 })
     }
 
+    @Test func aLimitBeyondWhatAClockCanSleepDoesNotTrap() async throws {
+        // Clock.sleep(for:) traps for a Duration of about 2^63 seconds.
+        let value = try await withTimeout(.seconds(Int64.max)) {
+            try await Task.sleep(for: .milliseconds(50))
+            return 42
+        }
+        #expect(value == 42)
+    }
+
     @Test func passesOnTheErrorOfTheOperation() async {
         struct Failure: Error, Equatable {}
         await #expect(throws: Failure()) {

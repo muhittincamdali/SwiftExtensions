@@ -32,7 +32,8 @@ public struct TimeoutError: Error, Hashable, CustomStringConvertible {
 /// cancelled.
 ///
 /// A `timeout` of zero or less throws ``TimeoutError`` without starting the operation, and a
-/// task that is already cancelled throws `CancellationError`.
+/// task that is already cancelled throws `CancellationError`. A `timeout` above `Int64.max`
+/// nanoseconds (about 292 years), which `Clock.sleep(for:)` cannot wait for, waits that long.
 ///
 /// - Parameters:
 ///   - timeout: How long the operation may run.
@@ -56,7 +57,7 @@ public func withTimeout<Success: Sendable, C: Clock>(
     return try await withThrowingTaskGroup(of: Success.self) { group in
         group.addTask(operation: operation)
         group.addTask {
-            try await clock.sleep(for: timeout, tolerance: tolerance)
+            try await clock.sleep(for: min(timeout, .longestSleep), tolerance: tolerance)
             throw TimeoutError(timeout: timeout)
         }
         defer { group.cancelAll() }
