@@ -134,7 +134,9 @@ private final class ObserverTokens: @unchecked Sendable {
     }
 }
 
-#if canImport(UIKit) && !os(watchOS)
+// UITraitCollection.systemPrefersReducedResourceUsage is in the iOS 27 SDK, which ships with
+// Swift 6.4 (Xcode 27). With an older Xcode the package builds without this method.
+#if canImport(UIKit) && !os(watchOS) && compiler(>=6.4)
 @available(iOS 27.0, tvOS 27.0, visionOS 27.0, *)
 extension ResourceUsageAdvice {
     /// The advice for this moment, with the iOS 27 preference read from a trait collection.
