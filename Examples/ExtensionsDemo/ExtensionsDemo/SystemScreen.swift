@@ -9,6 +9,7 @@ import UIKit
 struct SystemScreen: View {
     @State private var advice = ResourceUsageAdvice.current()
     @State private var sceneState = "–"
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         List {
@@ -27,7 +28,8 @@ struct SystemScreen: View {
             #endif
         }
         .modifier(SystemPreferenceReader(advice: $advice))
-        .task { readScene() }
+        // The scene is still inactive while the app launches, so read it again on every change.
+        .onChange(of: scenePhase, initial: true) { readScene() }
     }
 
     private var systemPreference: String {
