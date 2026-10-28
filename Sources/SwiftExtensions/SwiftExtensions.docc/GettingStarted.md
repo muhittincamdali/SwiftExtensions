@@ -14,7 +14,7 @@ your app target. In a `Package.swift`:
 ```
 
 The package needs Swift 6.2 (Xcode 26) or later and runs on iOS 18, macOS 15, tvOS 18,
-watchOS 11 and visionOS 2 or later. ``ResourceUsageAdvice/current(traitCollection:)`` needs the
+watchOS 11 and visionOS 2 or later. `ResourceUsageAdvice.current(traitCollection:)` needs the
 iOS 27 SDK (Xcode 27); everything else builds with both.
 
 ## Import the module

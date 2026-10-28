@@ -70,7 +70,7 @@ struct EffectsView: View {
 }
 ```
 
-In UIKit, ``ResourceUsageAdvice/current(traitCollection:)`` reads the trait of a view or view
+In UIKit, `ResourceUsageAdvice.current(traitCollection:)` reads the trait of a view or view
 controller.
 
 ``ResourceUsageAdvice/updates(systemPrefersReducedResourceUsage:)`` keeps only the newest value
