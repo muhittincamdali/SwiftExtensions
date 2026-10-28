@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
+<!-- i18n-source: README.md@c00d9955298fc27d6c0cca3e349200338c272d46 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -248,6 +248,15 @@ makalesi paketi ayrıca swift-async-algorithms, swift-concurrency-extras ve Coll
 ## Örnek uygulama
 
 [`Examples/ExtensionsDemo`](Examples/ExtensionsDemo), her extension grubu için bir ekran içeren, iOS ve macOS için bir SwiftUI uygulamasıdır: uygulamayı durduran değerlerin dönüşümleri, bayt sınırına göre kısaltılan bir metin alanı, `withTimeout`, `withRetry` ve `concurrentMap` çalıştıran düğmeler ile canlı kaynak önerisi ve pencere sahnesi durumu. `ExtensionsDemo.xcodeproj` dosyasını açın ve **Run**'a basın. UI testleri, her ekranın ne gösterdiğini bir iOS simülatöründe denetler.
+
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="ExtensionsDemo'nun Conversions ekranı"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="ExtensionsDemo'nun UTF-8 truncation ekranı"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="ExtensionsDemo'nun ölçülen sonuçlarıyla Async limits ekranı"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="ExtensionsDemo'nun Scenes and resources ekranı"></picture>
+</p>
+
+Ekran görüntüleri, uygulamadan bir iPhone simülatöründe `scripts/capture-screens.sh` ile alınmıştır.
 
 ## Dokümantasyon
 

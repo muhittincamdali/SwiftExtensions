@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
+<!-- i18n-source: README.md@c00d9955298fc27d6c0cca3e349200338c272d46 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -248,6 +248,15 @@ también compara el paquete con swift-async-algorithms, swift-concurrency-extras
 ## App de ejemplo
 
 [`Examples/ExtensionsDemo`](Examples/ExtensionsDemo) es una app de SwiftUI para iOS y macOS con una pantalla por cada grupo de extensiones: conversiones de valores que detienen la app, un campo de texto truncado a un límite de bytes, botones que ejecutan `withTimeout`, `withRetry` y `concurrentMap`, y el consejo de recursos y el estado de la escena de ventana en directo. Abre `ExtensionsDemo.xcodeproj` y pulsa **Run**. Sus pruebas de interfaz comprueban en un simulador de iOS lo que muestra cada pantalla.
+
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="La pantalla Conversions de ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="La pantalla UTF-8 truncation de ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="La pantalla Async limits de ExtensionsDemo con resultados medidos"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="La pantalla Scenes and resources de ExtensionsDemo"></picture>
+</p>
+
+Las capturas salen de la app en un simulador de iPhone y las toma `scripts/capture-screens.sh`.
 
 ## Documentación
 

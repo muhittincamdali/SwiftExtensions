@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
+<!-- i18n-source: README.md@c00d9955298fc27d6c0cca3e349200338c272d46 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -245,6 +245,15 @@ struct GalleryView: View {
 ## サンプルアプリ
 
 [`Examples/ExtensionsDemo`](Examples/ExtensionsDemo) は、iOS と macOS 向けの SwiftUI アプリで、extension のグループごとに 1 つの画面があります。クラッシュする値の変換、バイト数の上限で切り詰めるテキストフィールド、`withTimeout`、`withRetry`、`concurrentMap` を実行するボタン、そしてリソースのアドバイスとウィンドウシーンの状態のライブ表示です。`ExtensionsDemo.xcodeproj` を開いて **Run** を押してください。UI テストは、各画面の表示内容を iOS シミュレータで確認します。
+
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="ExtensionsDemo の Conversions 画面"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="ExtensionsDemo の UTF-8 truncation 画面"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="ExtensionsDemo の Async limits 画面と計測結果"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="ExtensionsDemo の Scenes and resources 画面"></picture>
+</p>
+
+スクリーンショットは `scripts/capture-screens.sh` が iPhone シミュレータ上のアプリから撮影したものです。
 
 ## ドキュメント
 

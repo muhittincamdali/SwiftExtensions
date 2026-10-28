@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
+<!-- i18n-source: README.md@c00d9955298fc27d6c0cca3e349200338c272d46 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -248,6 +248,15 @@ também compara o pacote com swift-async-algorithms, swift-concurrency-extras e 
 ## App de exemplo
 
 [`Examples/ExtensionsDemo`](Examples/ExtensionsDemo) é um app SwiftUI para iOS e macOS com uma tela por grupo de extensions: conversões de valores que interrompem o app, um campo de texto truncado em um limite de bytes, botões que executam `withTimeout`, `withRetry` e `concurrentMap`, e a recomendação de recursos e o estado da cena de janela ao vivo. Abra `ExtensionsDemo.xcodeproj` e pressione **Run**. Seus testes de interface verificam, em um simulador de iOS, o que cada tela mostra.
+
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="A tela Conversions do ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="A tela UTF-8 truncation do ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="A tela Async limits do ExtensionsDemo com resultados medidos"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="A tela Scenes and resources do ExtensionsDemo"></picture>
+</p>
+
+As capturas de tela vêm do app em um simulador de iPhone, feitas por `scripts/capture-screens.sh`.
 
 ## Documentação
 

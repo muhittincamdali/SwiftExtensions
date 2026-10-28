@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
+<!-- i18n-source: README.md@c00d9955298fc27d6c0cca3e349200338c272d46 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -245,6 +245,15 @@ struct GalleryView: View {
 ## 示例应用
 
 [`Examples/ExtensionsDemo`](Examples/ExtensionsDemo) 是一个面向 iOS 和 macOS 的 SwiftUI 应用，每组 extension 对应一个界面：会导致崩溃的值的转换、按字节上限截断的文本框、运行 `withTimeout`、`withRetry` 和 `concurrentMap` 的按钮，以及实时的资源建议和窗口场景状态。打开 `ExtensionsDemo.xcodeproj` 并按 **Run**。它的 UI 测试会在 iOS 模拟器上检查每个界面显示的内容。
+
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="ExtensionsDemo 的 Conversions 界面"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="ExtensionsDemo 的 UTF-8 truncation 界面"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="ExtensionsDemo 的 Async limits 界面及实测结果"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="ExtensionsDemo 的 Scenes and resources 界面"></picture>
+</p>
+
+这些截图由 `scripts/capture-screens.sh` 在 iPhone 模拟器上从应用中截取。
 
 ## 文档
 

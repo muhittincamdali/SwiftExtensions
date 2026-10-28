@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
+<!-- i18n-source: README.md@c00d9955298fc27d6c0cca3e349200338c272d46 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -248,6 +248,15 @@ struct GalleryView: View {
 ## Пример приложения
 
 [`Examples/ExtensionsDemo`](Examples/ExtensionsDemo) — приложение SwiftUI для iOS и macOS с отдельным экраном для каждой группы extension: преобразования значений, которые останавливают приложение, текстовое поле, обрезаемое до лимита байтов, кнопки, запускающие `withTimeout`, `withRetry` и `concurrentMap`, а также актуальная рекомендация по ресурсам и состояние сцены окна. Откройте `ExtensionsDemo.xcodeproj` и нажмите **Run**. Его UI-тесты проверяют на симуляторе iOS, что показывает каждый экран.
+
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="Экран Conversions в ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="Экран UTF-8 truncation в ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="Экран Async limits в ExtensionsDemo с измеренными результатами"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="Экран Scenes and resources в ExtensionsDemo"></picture>
+</p>
+
+Снимки экрана сделаны скриптом `scripts/capture-screens.sh` с приложения на симуляторе iPhone.
 
 ## Документация
 

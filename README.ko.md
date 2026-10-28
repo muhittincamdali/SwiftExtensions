@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
+<!-- i18n-source: README.md@c00d9955298fc27d6c0cca3e349200338c272d46 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -245,6 +245,15 @@ struct GalleryView: View {
 ## 예제 앱
 
 [`Examples/ExtensionsDemo`](Examples/ExtensionsDemo)는 iOS와 macOS용 SwiftUI 앱으로, extension 그룹마다 화면이 하나씩 있습니다. 앱을 멈추게 하는 값의 변환, 바이트 제한에 맞춰 잘리는 텍스트 필드, `withTimeout`, `withRetry`, `concurrentMap`을 실행하는 버튼, 그리고 실시간 리소스 권고와 윈도 scene 상태입니다. `ExtensionsDemo.xcodeproj`를 열고 **Run**을 누르세요. UI 테스트는 각 화면이 무엇을 표시하는지 iOS 시뮬레이터에서 확인합니다.
+
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="ExtensionsDemo의 Conversions 화면"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="ExtensionsDemo의 UTF-8 truncation 화면"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="측정 결과가 표시된 ExtensionsDemo의 Async limits 화면"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="ExtensionsDemo의 Scenes and resources 화면"></picture>
+</p>
+
+스크린샷은 `scripts/capture-screens.sh`가 iPhone 시뮬레이터에서 앱을 촬영한 것입니다.
 
 ## 문서
 

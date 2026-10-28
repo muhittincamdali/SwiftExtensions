@@ -297,6 +297,15 @@ limit, buttons that run `withTimeout`, `withRetry` and `concurrentMap`, and the 
 advice and window scene state. Open `ExtensionsDemo.xcodeproj` and press **Run**. Its UI tests
 check on an iOS simulator what each screen shows.
 
+<p align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/conversions-dark.png"><img src="docs/images/conversions-light.png" width="200" alt="The Conversions screen of ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/truncation-dark.png"><img src="docs/images/truncation-light.png" width="200" alt="The UTF-8 truncation screen of ExtensionsDemo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/async-dark.png"><img src="docs/images/async-light.png" width="200" alt="The Async limits screen of ExtensionsDemo with measured results"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/system-dark.png"><img src="docs/images/system-light.png" width="200" alt="The Scenes and resources screen of ExtensionsDemo"></picture>
+</p>
+
+The screenshots come from the app on an iPhone simulator, taken by `scripts/capture-screens.sh`.
+
 ## Documentation
 
 The [documentation](https://muhittincamdali.github.io/SwiftExtensions/documentation/swiftextensions/)
