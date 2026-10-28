@@ -1,80 +1,85 @@
-# Contributing to SwiftRouter
+# Contributing
 
-First off, thank you for considering contributing to SwiftRouter! It's people like you that make SwiftRouter such a great tool.
+Thanks for taking the time to improve SwiftExtensions.
 
-## Code of Conduct
+## What belongs in this package
 
-This project and everyone participating in it is governed by our Code of Conduct. By participating, you are expected to uphold this code.
+The package is small on purpose. A new extension is accepted when:
 
-## How Can I Contribute?
+1. the standard library, Foundation and [SwifterSwift](https://github.com/SwifterSwift/SwifterSwift)
+   do not provide it, or provide it in a way that traps, has no limit or does not compile in the
+   Swift 6 language mode;
+2. it is correct under strict concurrency: `Sendable` types and closures whose isolation is
+   stated, without `@unchecked Sendable` in the public API;
+3. it comes with Swift Testing tests for its edge cases (NaN, infinity, empty input, the exact
+   limit, cancellation) and a documentation comment that says why it exists.
 
-### Reporting Bugs
+Open an issue that explains the need before you write a large change, so that we can agree it
+fits.
 
-Before creating bug reports, please check the existing issues as you might find out that you don't need to create one. When you are creating a bug report, please include as many details as possible:
+## Reporting bugs
 
-- **Use a clear and descriptive title**
-- **Describe the exact steps which reproduce the problem**
-- **Provide specific examples to demonstrate the steps**
-- **Describe the behavior you observed after following the steps**
-- **Explain which behavior you expected to see instead and why**
-- **Include Swift version and OS version**
+Open an issue with:
 
-### Suggesting Enhancements
+- the call, the input values and what you expected,
+- the platform and OS version (simulator or device) and the Xcode version.
 
-Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, please include:
+Input that makes an extension crash, hang or use memory without bound is a security issue:
+report it privately as described in [SECURITY.md](SECURITY.md).
 
-- **Use a clear and descriptive title**
-- **Provide a step-by-step description of the suggested enhancement**
-- **Provide specific examples to demonstrate the steps**
-- **Describe the current behavior and explain which behavior you expected to see instead**
-- **Explain why this enhancement would be useful**
+## Pull requests
 
-### Pull Requests
+1. Fork the repository and branch from `main`.
+2. Keep each pull request focused on one change, with tests for the logic it changes.
+3. Run the tests on macOS and on an iPhone simulator:
 
-1. Fork the repo and create your branch from `main`
-2. If you've added code that should be tested, add tests
-3. If you've changed APIs, update the documentation
-4. Ensure the test suite passes
-5. Make sure your code follows the existing style (SwiftLint)
-6. Issue that pull request!
+    ```sh
+    swift test
+    xcodebuild test -scheme SwiftExtensions \
+      -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
+    ```
 
-## Development Setup
+4. Build the documentation without warnings:
 
-```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/SwiftRouter.git
+    ```sh
+    xcodebuild docbuild -scheme SwiftExtensions \
+      -destination 'generic/platform=iOS Simulator' OTHER_DOCC_FLAGS=--warnings-as-errors
+    ```
 
-# Navigate to the project
-cd SwiftRouter
+5. If you change the example app, run its UI tests:
 
-# Open in Xcode
-open Package.swift
+    ```sh
+    cd Examples/ExtensionsDemo
+    xcodebuild test -scheme ExtensionsDemo \
+      -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
+    ```
 
-# Run tests
-swift test
-```
+6. If you change a README code sample, change the copy in
+   `Examples/ExtensionsDemo/ExtensionsDemo/ReadmeSamples.swift` as well. That file is what gets
+   compiled: by the example app, and by `swift test` through the link
+   `Tests/SwiftExtensionsTests/ReadmeSamples.swift`.
+7. If the example app looks different after your change, recapture the README screenshots with
+   `scripts/capture-screens.sh`.
+8. `README.md` has translations (`README.<language>.md`). Each one records the version of
+   `README.md` it follows, and CI fails while a translation is behind. If you change `README.md`
+   and cannot update the translations, say so in the pull request and they will be updated
+   before it is merged.
 
-## Style Guide
+Use [Conventional Commits](https://www.conventionalcommits.org/) for commit messages, for example
+`fix(text): keep a flag emoji whole`.
 
-- Follow [Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
-- Use SwiftLint for code style consistency
-- Write meaningful commit messages following [Conventional Commits](https://www.conventionalcommits.org/)
-- Document public APIs with DocC-compatible comments
+## Where things are
 
-## Commit Messages
+| Path | Contents |
+| --- | --- |
+| `Sources/SwiftExtensions/Concurrency` | `withTimeout`, `withRetry`, `concurrentMap`, `collect(limit:)` |
+| `Sources/SwiftExtensions/Foundation` | `Duration` conversions and `URLSession` size limits |
+| `Sources/SwiftExtensions/Numerics`, `Text` | Conversions that do not trap, UTF-8 truncation |
+| `Sources/SwiftExtensions/UIKit`, `System` | Window scenes and `ResourceUsageAdvice` |
+| `Sources/SwiftExtensions/SwiftExtensions.docc` | The documentation catalog |
+| `Tests/SwiftExtensionsTests` | Swift Testing tests |
+| `Examples/ExtensionsDemo` | The example app (XcodeGen spec in `project.yml`) and its UI tests |
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+## Code of conduct
 
-- `feat:` A new feature
-- `fix:` A bug fix
-- `docs:` Documentation only changes
-- `style:` Code style changes (formatting, semicolons, etc)
-- `refactor:` Code change that neither fixes a bug nor adds a feature
-- `test:` Adding missing tests
-- `chore:` Changes to the build process or auxiliary tools
-
-Example: `feat(deeplink): add universal link support`
-
-## License
-
-By contributing, you agree that your contributions will be licensed under the MIT License.
+This project follows the [Contributor Covenant](CODE_OF_CONDUCT.md).

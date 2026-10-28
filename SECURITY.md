@@ -1,53 +1,44 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+Several extensions in SwiftExtensions exist to keep values from outside the app from crashing it
+or filling its memory: numbers that may be NaN or out of range, response bodies, async sequences
+and text of any length, retry settings from remote configuration. A way around one of these
+guarantees is a vulnerability.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+## In scope
 
-## Reporting a Vulnerability
+- A value for which `Int(rounding:)`, `init(clamping:)` or `Duration(timeInterval:)` stops the
+  app instead of returning `nil` or a clamped value.
+- A response body that `URLSession.data(for:limit:)` returns although it is larger than the
+  limit, or that it reads far beyond the limit before it throws.
+- An async sequence that `collect(limit:)` or `collectData(limit:)` reads past element
+  `limit + 1`.
+- A `RetryPolicy` built from any input that retries more than 100 times, waits longer than its
+  `maxDelay`, or traps.
+- `truncated(toUTF8ByteCount:ending:)` returning more bytes than the limit or invalid text.
+- `ResourceUsageAdvice.updates()` buffering more than one value, or keeping its observers after
+  the stream ends.
+- A data race that the package's `Sendable` types or closures allow.
 
-We take the security of SwiftRouter seriously. If you have discovered a security vulnerability, we appreciate your help in disclosing it to us in a responsible manner.
+## Supported versions
 
-### How to Report
+Security fixes are made for the latest release. 1.x is no longer maintained.
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+## Reporting a vulnerability
 
-Instead, please report them via email to the repository owner. You can find contact information on the GitHub profile.
+Please report vulnerabilities privately, not in a public issue, pull request or discussion.
 
-Please include the following information:
+1. **Preferred:** open the repository's **Security** tab and choose
+   **Report a vulnerability** ([how private reporting works](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately)).
+2. **Or** email [muhittincamdali@gmail.com](mailto:muhittincamdali@gmail.com) with
+   "Security" in the subject.
 
-- Type of issue (e.g., deep link injection, state manipulation, etc.)
-- Full paths of source file(s) related to the manifestation of the issue
-- The location of the affected source code (tag/branch/commit or direct URL)
-- Any special configuration required to reproduce the issue
-- Step-by-step instructions to reproduce the issue
-- Proof-of-concept or exploit code (if possible)
-- Impact of the issue, including how an attacker might exploit it
+Include the version (tag or commit), the input that shows the problem, and what you expected to
+happen.
 
-### What to Expect
+## What happens next
 
-- A confirmation of receipt within 48 hours
-- An assessment of the vulnerability within 7 days
-- Regular updates on our progress
-- Credit for responsible disclosure (if desired)
-
-## Security Best Practices
-
-When using SwiftRouter in your projects:
-
-1. **Validate Deep Links** - Always validate URL parameters before navigation
-2. **Use Route Guards** - Implement authentication guards for protected routes
-3. **Sanitize Parameters** - Never trust user input from URL parameters
-4. **Audit Navigation Paths** - Review which screens are accessible via deep links
-
-## Security Features
-
-SwiftRouter includes several security considerations:
-
-- **Type-Safe Parameters** - Reduces injection risks
-- **Route Guards** - Authentication/authorization interceptors
-- **URL Validation** - Built-in URL parsing with validation
-- **No External Dependencies** - Minimal attack surface
+- You get a reply within 7 days confirming that the report arrived.
+- The issue is confirmed, fixed with a test that reproduces it, and released together with a
+  GitHub security advisory on a disclosure date agreed with you.
+- You are credited in the advisory unless you prefer not to be.

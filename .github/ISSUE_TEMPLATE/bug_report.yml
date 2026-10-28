@@ -1,81 +1,49 @@
-name: Bug Report
-description: File a bug report to help us improve
-title: "[Bug]: "
-labels: ["bug", "triage"]
+name: Bug report
+description: An extension in SwiftExtensions does not work as documented
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
-        
+        Input that makes an extension crash, hang or use memory without bound is a security issue: report it privately (see SECURITY.md), not here.
+
   - type: textarea
     id: description
     attributes:
-      label: Bug Description
-      description: A clear and concise description of what the bug is.
-      placeholder: Tell us what you see!
+      label: What happened
+      description: The call, the input values, what you expected and what you got.
     validations:
       required: true
-      
+
   - type: textarea
     id: reproduction
     attributes:
-      label: Steps to Reproduce
-      description: Steps to reproduce the behavior
-      placeholder: |
-        1. Call extension method...
-        2. Pass these parameters...
-        3. See unexpected result
-    validations:
-      required: true
-      
-  - type: textarea
-    id: expected
-    attributes:
-      label: Expected Behavior
-      description: What you expected to happen
-    validations:
-      required: true
-      
-  - type: textarea
-    id: code
-    attributes:
-      label: Code Sample
-      description: If applicable, add a minimal code sample
+      label: Code that shows it
+      description: A few lines that call the extension with the values that show the problem.
       render: swift
-      
-  - type: dropdown
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: SwiftExtensions version
+      placeholder: "2.0.0"
+    validations:
+      required: true
+
+  - type: input
     id: platform
     attributes:
-      label: Platform
-      options:
-        - iOS
-        - macOS
-        - tvOS
-        - watchOS
-        - visionOS
-        - Linux
+      label: Platform and OS version
+      placeholder: "iOS 27.0 simulator"
     validations:
       required: true
-      
+
   - type: input
-    id: swift-version
+    id: xcode
     attributes:
-      label: Swift Version
-      placeholder: "5.9"
+      label: Xcode version
+      placeholder: "27.1"
     validations:
       required: true
-      
-  - type: input
-    id: library-version
-    attributes:
-      label: Library Version
-      placeholder: "1.0.0"
-    validations:
-      required: true
-      
-  - type: textarea
-    id: additional
-    attributes:
-      label: Additional Context
-      description: Add any other context about the problem here
