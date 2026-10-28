@@ -15,7 +15,7 @@ struct ReadmeSampleTests {
         for _ in 1..<3 where result != expected {
             result = await waitWithLimit()
         }
-        #expect(result == expected)
+        #expect(result == expected, "waitWithLimit returned \(result)")
     }
 
     @Test func theProgressLabelSurvivesADivisionByZero() {
