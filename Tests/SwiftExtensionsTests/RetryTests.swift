@@ -23,6 +23,12 @@ struct RetryPolicyTests {
         #expect(policy.delay(afterAttempt: attempt, randomFraction: 0) == .seconds(30))
     }
 
+    @Test(arguments: [1, 40, 1_000, Int.max])
+    func aZeroStartStaysZeroWhateverTheMultiplier(attempt: Int) {
+        let policy = RetryPolicy(initialDelay: .zero, multiplier: 1e10, maxDelay: .seconds(30), jitter: 0)
+        #expect(policy.delay(afterAttempt: attempt, randomFraction: 0) == .zero)
+    }
+
     @Test func attemptNumbersBelowOneCountAsOne() {
         let policy = RetryPolicy(initialDelay: .seconds(1), jitter: 0)
         #expect(policy.delay(afterAttempt: 0, randomFraction: 0) == .seconds(1))

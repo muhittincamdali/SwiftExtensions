@@ -55,6 +55,8 @@ public struct RetryPolicy: Sendable, Hashable {
     /// - Returns: `initialDelay × multiplier^(failedAttempt − 1)`, at most ``maxDelay``, minus
     ///   `jitter × randomFraction` of that wait.
     public func delay(afterAttempt failedAttempt: Int, randomFraction: Double) -> Duration {
+        // Zero grown by an infinite factor is NaN, which would turn into the maximum below.
+        guard initialDelay > .zero else { return .zero }
         let exponent = Double(max(failedAttempt, 1) - 1)
         let ceiling = maxDelay.timeInterval
         let grown = initialDelay.timeInterval * pow(multiplier, exponent)
