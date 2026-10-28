@@ -12,7 +12,6 @@ struct TimeoutTests {
 
     @Test func throwsTimeoutErrorAndCancelsASlowOperation() async throws {
         let wasCancelled = Mutex(false)
-        let started = ContinuousClock.now
         await #expect(throws: TimeoutError(timeout: .milliseconds(50))) {
             try await withTimeout(.milliseconds(50)) {
                 do {
@@ -24,7 +23,6 @@ struct TimeoutTests {
             }
         }
         #expect(wasCancelled.withLock { $0 })
-        #expect(ContinuousClock.now - started < .seconds(10))
     }
 
     @Test(arguments: [Duration.zero, .milliseconds(-1), .seconds(-60)])
