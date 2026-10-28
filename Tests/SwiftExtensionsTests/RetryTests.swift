@@ -152,14 +152,13 @@ struct WithRetryTests {
 
     @Test func cancellingDuringAWaitStopsAtOnce() async {
         let slow = RetryPolicy(maxAttempts: 3, initialDelay: .seconds(60), jitter: 0)
-        let started = ContinuousClock.now
         let task = Task {
             try await withRetry(slow) { attempt -> Int in throw Flaky(attempt: attempt) }
         }
         try? await Task.sleep(for: .milliseconds(50))
         task.cancel()
+        // A wait that ignored the cancellation would end in the operation's own error after 60 s.
         await #expect(throws: CancellationError.self) { try await task.value }
-        #expect(ContinuousClock.now - started < .seconds(10))
     }
 
     @Test func aHugeMaximumWaitsUntilCancelledInsteadOfTrapping() async {

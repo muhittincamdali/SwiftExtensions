@@ -1,4 +1,5 @@
 import Foundation
+import Synchronization
 import Testing
 import SwiftExtensions
 
@@ -71,13 +72,19 @@ struct ResourceUsageAdviceTests {
         for _ in 0..<1_000 {
             NotificationCenter.default.post(name: .NSProcessInfoPowerStateDidChange, object: nil)
         }
+        let received = Mutex(0)
         let reader = Task {
-            var received = 0
-            for await _ in stream { received += 1 }
-            return received
+            for await _ in stream { received.withLock { $0 += 1 } }
+        }
+        // A loaded runner can start the reader late, so wait for the first advice instead of a
+        // fixed pause, then leave time for a second one to show up.
+        let deadline = ContinuousClock.now.advanced(by: .seconds(30))
+        while received.withLock({ $0 }) < 1, ContinuousClock.now < deadline {
+            try? await Task.sleep(for: .milliseconds(10))
         }
         try? await Task.sleep(for: .milliseconds(200))
         reader.cancel()
-        #expect(await reader.value == 1)
+        await reader.value
+        #expect(received.withLock { $0 } == 1)
     }
 }
