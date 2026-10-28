@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@efa531e5a15c1c169094fd2912cff4214a3c7e45 status=reviewed -->
+<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -37,7 +37,7 @@ O SwiftExtensions é um pequeno pacote Swift com extensions que a biblioteca pad
 - **Limites de tamanho** — `collect(limit:)` e `URLSession.data(for:limit:)` param de ler no limite em vez de encher a memória; `truncated(toUTF8ByteCount:)` mantém o texto dentro de um orçamento de bytes sem cortar um emoji ao meio.
 - **iOS 27** — `UIApplication.activeWindowScene` e `activeKeyWindow` substituem `windows` e `keyWindow`, descontinuados, para o ciclo de vida das cenas que o iOS 27 exige, e `ResourceUsageAdvice` combina a preferência de recursos reduzidos do iOS 27 com o Modo de Pouca Energia e o estado térmico a partir do iOS 18.
 - **Concorrência estrita do Swift 6** — todo tipo público é `Sendable`, toda closure declara seu isolamento e o pacote compila sem avisos no modo de linguagem Swift 6.
-- **Testado** — 85 testes do Swift Testing no macOS, incluindo os exemplos do README; os mesmos testes mais os do UIKit em um simulador de iOS, e 7 testes de interface que controlam o app de exemplo.
+- **Testado** — 89 testes do Swift Testing no macOS, incluindo os exemplos do README; os mesmos testes mais os do UIKit em um simulador de iOS, e 7 testes de interface que controlam o app de exemplo.
 
 ## Início rápido
 

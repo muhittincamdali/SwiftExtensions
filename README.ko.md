@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@efa531e5a15c1c169094fd2912cff4214a3c7e45 status=reviewed -->
+<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -37,7 +37,7 @@ SwiftExtensions는 표준 라이브러리, Foundation, [SwifterSwift](https://gi
 - **크기 제한** — `collect(limit:)`와 `URLSession.data(for:limit:)`는 메모리를 가득 채우는 대신 제한에서 읽기를 멈춥니다. `truncated(toUTF8ByteCount:)`는 이모지를 반으로 자르지 않으면서 텍스트를 바이트 예산 안에 유지합니다.
 - **iOS 27** — `UIApplication.activeWindowScene`과 `activeKeyWindow`는 iOS 27에서 필수인 scene 생명 주기에 맞춰 더 이상 권장되지 않는 `windows`와 `keyWindow`를 대체합니다. `ResourceUsageAdvice`는 iOS 27의 리소스 사용 절감 설정을 저전력 모드, 그리고 iOS 18부터 제공되는 열 상태와 결합합니다.
 - **Swift 6 strict concurrency** — 모든 public 타입이 `Sendable`이고, 모든 클로저가 isolation을 명시하며, 패키지는 Swift 6 언어 모드에서 경고 없이 빌드됩니다.
-- **테스트 완료** — macOS에서 README 예제를 포함한 85개의 Swift Testing 테스트, iOS 시뮬레이터에서 같은 테스트와 UIKit 테스트, 그리고 예제 앱을 조작하는 7개의 UI 테스트가 있습니다.
+- **테스트 완료** — macOS에서 README 예제를 포함한 89개의 Swift Testing 테스트, iOS 시뮬레이터에서 같은 테스트와 UIKit 테스트, 그리고 예제 앱을 조작하는 7개의 UI 테스트가 있습니다.
 
 ## 빠른 시작
 

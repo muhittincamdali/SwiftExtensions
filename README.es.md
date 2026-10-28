@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@efa531e5a15c1c169094fd2912cff4214a3c7e45 status=reviewed -->
+<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -37,7 +37,7 @@ SwiftExtensions es un pequeño paquete de Swift con extensiones que la bibliotec
 - **Límites de tamaño** — `collect(limit:)` y `URLSession.data(for:limit:)` dejan de leer al llegar al límite en lugar de llenar la memoria; `truncated(toUTF8ByteCount:)` mantiene el texto dentro de un presupuesto de bytes sin cortar un emoji por la mitad.
 - **iOS 27** — `UIApplication.activeWindowScene` y `activeKeyWindow` sustituyen a `windows` y `keyWindow`, obsoletos, para el ciclo de vida de las escenas que exige iOS 27, y `ResourceUsageAdvice` combina la preferencia de recursos reducidos de iOS 27 con el modo de bajo consumo y el estado térmico desde iOS 18.
 - **Concurrencia estricta de Swift 6** — todos los tipos públicos son `Sendable`, todos los closures indican su aislamiento y el paquete compila sin advertencias en el modo de lenguaje de Swift 6.
-- **Probado** — 85 pruebas con Swift Testing en macOS, incluidos los ejemplos del README; las mismas pruebas más las de UIKit en un simulador de iOS, y 7 pruebas de interfaz que manejan la app de ejemplo.
+- **Probado** — 89 pruebas con Swift Testing en macOS, incluidos los ejemplos del README; las mismas pruebas más las de UIKit en un simulador de iOS, y 7 pruebas de interfaz que manejan la app de ejemplo.
 
 ## Inicio rápido
 

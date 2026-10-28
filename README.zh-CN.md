@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@efa531e5a15c1c169094fd2912cff4214a3c7e45 status=reviewed -->
+<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -37,7 +37,7 @@ SwiftExtensions 是一个小型 Swift 软件包，提供标准库、Foundation �
 - **大小限制** — `collect(limit:)` 和 `URLSession.data(for:limit:)` 在达到上限时停止读取，而不是占满内存；`truncated(toUTF8ByteCount:)` 让文本保持在字节预算之内，且不会把一个 emoji 从中间截断。
 - **iOS 27** — `UIApplication.activeWindowScene` 和 `activeKeyWindow` 取代已弃用的 `windows` 和 `keyWindow`，适配 iOS 27 要求的场景生命周期；`ResourceUsageAdvice` 将 iOS 27 的降低资源占用偏好与低电量模式以及自 iOS 18 起提供的热状态结合起来。
 - **Swift 6 严格并发** — 每个公开类型都是 `Sendable`，每个闭包都声明其隔离方式，软件包在 Swift 6 语言模式下编译无警告。
-- **经过测试** — 在 macOS 上有 85 个 Swift Testing 测试（包括 README 中的示例），在 iOS 模拟器上运行同样的测试外加 UIKit 测试，另有 7 个驱动示例应用的 UI 测试。
+- **经过测试** — 在 macOS 上有 89 个 Swift Testing 测试（包括 README 中的示例），在 iOS 模拟器上运行同样的测试外加 UIKit 测试，另有 7 个驱动示例应用的 UI 测试。
 
 ## 快速开始
 

@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@efa531e5a15c1c169094fd2912cff4214a3c7e45 status=reviewed -->
+<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -37,7 +37,7 @@ SwiftExtensions ist ein kleines Swift-Paket mit Extensions, die die Standardbibl
 - **Größenlimits** — `collect(limit:)` und `URLSession.data(for:limit:)` hören am Limit auf zu lesen, statt den Speicher zu füllen; `truncated(toUTF8ByteCount:)` hält Text innerhalb eines Byte-Budgets, ohne ein Emoji in der Mitte zu zerschneiden.
 - **iOS 27** — `UIApplication.activeWindowScene` und `activeKeyWindow` ersetzen die veralteten `windows` und `keyWindow` für den Szenen-Lebenszyklus, den iOS 27 verlangt, und `ResourceUsageAdvice` verbindet die Einstellung für reduzierten Ressourcenverbrauch von iOS 27 mit dem Stromsparmodus und dem thermischen Zustand ab iOS 18.
 - **Strikte Concurrency von Swift 6** — jeder öffentliche Typ ist `Sendable`, jede Closure gibt ihre Isolation an, und das Paket baut im Sprachmodus von Swift 6 ohne Warnungen.
-- **Getestet** — 85 Swift-Testing-Tests auf macOS, einschließlich der README-Beispiele, dieselben Tests plus die UIKit-Tests auf einem iOS-Simulator und 7 UI-Tests, die die Beispiel-App bedienen.
+- **Getestet** — 89 Swift-Testing-Tests auf macOS, einschließlich der README-Beispiele, dieselben Tests plus die UIKit-Tests auf einem iOS-Simulator und 7 UI-Tests, die die Beispiel-App bedienen.
 
 ## Schnellstart
 

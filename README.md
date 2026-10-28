@@ -56,7 +56,7 @@ together.
   the thermal state from iOS 18 on.
 - **Swift 6 strict concurrency** — every public type is `Sendable`, every closure states its
   isolation, and the package builds without warnings in the Swift 6 language mode.
-- **Tested** — 85 Swift Testing tests on macOS, including the README samples, the same tests plus
+- **Tested** — 89 Swift Testing tests on macOS, including the README samples, the same tests plus
   the UIKit ones on an iOS simulator, and 7 UI tests that drive the example app.
 
 ## Quick start

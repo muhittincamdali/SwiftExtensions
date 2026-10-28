@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@efa531e5a15c1c169094fd2912cff4214a3c7e45 status=reviewed -->
+<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -37,7 +37,7 @@ SwiftExtensions — небольшой Swift-пакет с extension, котор
 - **Ограничения размера** — `collect(limit:)` и `URLSession.data(for:limit:)` прекращают чтение на лимите, а не заполняют память; `truncated(toUTF8ByteCount:)` удерживает текст в пределах бюджета байтов, не разрезая эмодзи пополам.
 - **iOS 27** — `UIApplication.activeWindowScene` и `activeKeyWindow` заменяют устаревшие `windows` и `keyWindow` для жизненного цикла сцен, который требуется в iOS 27, а `ResourceUsageAdvice` объединяет настройку сокращённого потребления ресурсов из iOS 27 с режимом энергосбережения и тепловым состоянием начиная с iOS 18.
 - **Строгая конкурентность Swift 6** — каждый публичный тип — `Sendable`, каждое замыкание указывает свою изоляцию, а пакет собирается без предупреждений в языковом режиме Swift 6.
-- **Протестировано** — 85 тестов Swift Testing на macOS, включая примеры из README; те же тесты плюс тесты UIKit на симуляторе iOS и 7 UI-тестов, управляющих примером приложения.
+- **Протестировано** — 89 тестов Swift Testing на macOS, включая примеры из README; те же тесты плюс тесты UIKit на симуляторе iOS и 7 UI-тестов, управляющих примером приложения.
 
 ## Быстрый старт
 

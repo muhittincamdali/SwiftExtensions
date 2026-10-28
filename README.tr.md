@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@efa531e5a15c1c169094fd2912cff4214a3c7e45 status=reviewed -->
+<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -37,7 +37,7 @@ SwiftExtensions, standart kütüphanenin, Foundation'ın ve [SwifterSwift](https
 - **Boyut sınırları** — `collect(limit:)` ve `URLSession.data(for:limit:)` belleği doldurmak yerine sınırda okumayı bırakır; `truncated(toUTF8ByteCount:)` metni bir emojiyi ortadan kesmeden bayt bütçesi içinde tutar.
 - **iOS 27** — `UIApplication.activeWindowScene` ve `activeKeyWindow`, iOS 27'nin zorunlu kıldığı sahne yaşam döngüsü için kullanımdan kalkmış `windows` ve `keyWindow`'un yerini alır; `ResourceUsageAdvice` ise iOS 27'deki azaltılmış kaynak kullanımı tercihini Düşük Güç Modu ve iOS 18'den itibaren termal durumla birleştirir.
 - **Swift 6 strict concurrency** — her public tür `Sendable`'dır, her closure izolasyonunu belirtir ve paket Swift 6 dil modunda uyarısız derlenir.
-- **Test edilmiş** — macOS'ta README örnekleri dahil 85 Swift Testing testi, bir iOS simülatöründe aynı testler ile UIKit testleri ve örnek uygulamayı süren 7 UI testi.
+- **Test edilmiş** — macOS'ta README örnekleri dahil 89 Swift Testing testi, bir iOS simülatöründe aynı testler ile UIKit testleri ve örnek uygulamayı süren 7 UI testi.
 
 ## Hızlı başlangıç
 

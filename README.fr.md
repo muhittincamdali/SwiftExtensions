@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@efa531e5a15c1c169094fd2912cff4214a3c7e45 status=reviewed -->
+<!-- i18n-source: README.md@3d180556cbc0c706aa68ef860bd106b3c803f68b status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftExtensions/main/.github/brand/banner-light.svg" alt="SwiftExtensions: Swift 6 extensions for time limits, retries, bounded parallel work and conversions that do not trap."></picture></p>
@@ -37,7 +37,7 @@ SwiftExtensions est un petit paquet Swift d’extensions que la bibliothèque st
 - **Limites de taille** — `collect(limit:)` et `URLSession.data(for:limit:)` arrêtent la lecture à la limite au lieu de remplir la mémoire ; `truncated(toUTF8ByteCount:)` garde le texte dans un budget d’octets sans couper un emoji en deux.
 - **iOS 27** — `UIApplication.activeWindowScene` et `activeKeyWindow` remplacent `windows` et `keyWindow`, obsolètes, pour le cycle de vie des scènes qu’exige iOS 27, et `ResourceUsageAdvice` combine la préférence de ressources réduites d’iOS 27 avec le mode économie d’énergie et l’état thermique à partir d’iOS 18.
 - **Concurrence stricte de Swift 6** — chaque type public est `Sendable`, chaque closure indique son isolation, et le paquet compile sans avertissement dans le mode de langage Swift 6.
-- **Testé** — 85 tests Swift Testing sur macOS, dont les exemples du README ; les mêmes tests plus ceux d’UIKit sur un simulateur iOS, et 7 tests d’interface qui pilotent l’app d’exemple.
+- **Testé** — 89 tests Swift Testing sur macOS, dont les exemples du README ; les mêmes tests plus ceux d’UIKit sur un simulateur iOS, et 7 tests d’interface qui pilotent l’app d’exemple.
 
 ## Démarrage rapide
 
