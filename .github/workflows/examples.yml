@@ -1,4 +1,5 @@
-# Repository-specific: builds the example app that the README samples are copied from.
+# Repository-specific: builds the example app that the README samples are copied from and runs
+# its UI tests on an iOS simulator.
 name: Example app
 
 on:
@@ -44,4 +45,39 @@ jobs:
           set -o pipefail
           xcodebuild build -project ExtensionsDemo.xcodeproj -scheme ExtensionsDemo \
             -destination "$DESTINATION" -skipPackagePluginValidation -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO -quiet
+
+  ui-tests:
+    name: ExtensionsDemo UI tests (iOS Simulator)
+    runs-on: macos-26
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Toolchain
+        run: xcodebuild -version
+
+      - name: Boot an iPhone simulator
+        id: simulator
+        run: |
+          udid="$(xcrun simctl list devices available | grep -m1 -E '^ +iPhone ' | grep -oE '[0-9A-F-]{36}' || true)"
+          if [[ -z "$udid" ]]; then
+            echo "::error::No available iPhone simulator on this runner."
+            exit 1
+          fi
+          xcrun simctl bootstatus "$udid" -b
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+
+      - name: UI tests
+        working-directory: Examples/ExtensionsDemo
+        env:
+          UDID: ${{ steps.simulator.outputs.udid }}
+        run: |
+          set -o pipefail
+          xcodebuild test -project ExtensionsDemo.xcodeproj -scheme ExtensionsDemo \
+            -destination "platform=iOS Simulator,id=$UDID" -skipPackagePluginValidation -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO -quiet
